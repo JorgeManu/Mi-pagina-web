@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Cambia TU-USUARIO por tu usuario de GitHub
+Sitemap: https://TU-USUARIO.github.io/sitemap.xml

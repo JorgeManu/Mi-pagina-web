@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- SEO -->
+  <title>Jorge Manuel Firata Quispe</title>
+  <meta name="description" content="Jorge Manuel Firata Quispe, estudiante de Inteligencia Artificial en la Universidad Católica San Pablo (UCSP). Perfil, cursos, profesores y compañeros.">
+  <meta name="author" content="Jorge Manuel Firata Quispe">
+  <meta name="robots" content="index, follow">
+  <!-- Cuando tengas tu enlace de GitHub Pages, quita los comentarios y cambia TU-USUARIO -->
+  <!-- <link rel="canonical" href="https://TU-USUARIO.github.io/"> -->
+  <!-- <meta property="og:url" content="https://TU-USUARIO.github.io/"> -->
+  <meta property="og:type" content="profile">
+  <meta property="og:title" content="Jorge Manuel Firata Quispe">
+  <meta property="og:description" content="Estudiante. CV, cursos, profesores y compañeros.">
+  <meta property="og:locale" content="es_PE">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Jorge Manuel Firata Quispe",
+    "givenName": "Jorge Manuel",
+    "familyName": "Firata Quispe",
+    "jobTitle": "Estudiante",
+    "sameAs": ["https://www.linkedin.com/in/jorge-manuel-firata-quispe-40b648282/"]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --verde: #3fc47c;
+      --verde-oscuro: #2e9e62;
+      --negro: #151618;
+      --negro-2: #1d1f22;
+      --claro: #f3f7ff;
+      --blanco: #ffffff;
+      --tarjeta: #ffffff;
+      --azul-texto: #14264d;
+      --gris: #6b7488;
+      --linea: #cfd8ee;
+      --sombra: 0 6px 18px rgba(20, 38, 77, 0.10);
+    }
+    /* Tema oscuro (botón flotante) */
+    :root[data-tema="oscuro"] {
+      --claro: #101215;
+      --blanco: #16181c;
+      --tarjeta: #1e2127;
+      --azul-texto: #e6ebf7;
+      --gris: #98a1b5;
+      --linea: #343a46;
+      --sombra: 0 6px 18px rgba(0, 0, 0, 0.45);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: "Lato", "Segoe UI", Arial, sans-serif;
+      color: var(--azul-texto);
+      background: var(--claro);
+      line-height: 1.7;
+      transition: background 0.4s, color 0.4s;
+      overflow-x: hidden;
+    }
+    h1, h2, h3 { font-family: "Roboto Slab", Georgia, serif; margin: 0; }
+    a { color: inherit; }
+
+    /* ---------- Barra de progreso de lectura ---------- */
+    #progreso {
+      position: fixed; top: 0; left: 0; height: 3px; width: 100%;
+      background: linear-gradient(90deg, var(--verde), #7df0b0);
+      transform-origin: left; transform: scaleX(0);
+      z-index: 50;
+    }
+
+    /* ---------- Menú ---------- */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 40;
+      display: flex; justify-content: flex-end; align-items: center; gap: 4px 22px;
+      padding: 16px 28px;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.65), rgba(0,0,0,0));
+      transition: background 0.3s, padding 0.3s, box-shadow 0.3s;
+    }
+    nav.solido {
+      background: rgba(21, 22, 24, 0.92);
+      backdrop-filter: blur(8px);
+      padding: 10px 28px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+    }
+    nav .enlaces { display: flex; gap: 4px 22px; flex-wrap: wrap; justify-content: flex-end; }
+    nav a {
+      color: #fff; text-decoration: none; font-size: 0.82rem; font-weight: 700;
+      position: relative; padding: 2px 0;
+    }
+    nav a::after {
+      content: ""; position: absolute; left: 0; bottom: -2px; height: 2px; width: 100%;
+      background: var(--verde); transform: scaleX(0); transform-origin: left;
+      transition: transform 0.3s;
+    }
+    nav a:hover::after, nav a.activo::after { transform: scaleX(1); }
+    nav a.activo { color: var(--verde); }
+    #hamburguesa {
+      display: none; background: none; border: 0; color: #fff; font-size: 1.6rem;
+      cursor: pointer; line-height: 1;
+    }
+
+    /* ---------- Cabecera ---------- */
+    .hero {
+      position: relative; overflow: hidden;
+      min-height: 440px;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center; color: #fff;
+      padding: 110px 20px 80px;
+      background:
+        linear-gradient(rgba(10,12,14,0.62), rgba(10,12,14,0.80)),
+        url("fondo.jpg") center / cover no-repeat,
+        var(--negro);
+    }
+    #particulas { position: absolute; inset: 0; width: 100%; height: 100%; }
+    .hero > *:not(canvas) { position: relative; z-index: 1; }
+    .hero h1 {
+      font-size: clamp(2.2rem, 6vw, 3.4rem); line-height: 1.15; max-width: 600px;
+    }
+    .hero h1 .palabra { display: inline-block; opacity: 0; transform: translateY(30px); animation: subir 0.8s forwards; }
+    .hero h1 .palabra:nth-child(1) { animation-delay: 0.1s; }
+    .hero h1 .palabra:nth-child(2) { animation-delay: 0.25s; }
+    .hero h1 .palabra:nth-child(3) { animation-delay: 0.4s; }
+    .hero h1 .palabra:nth-child(4) { animation-delay: 0.55s; }
+    .hero p {
+      margin: 20px 0 0; font-family: "Roboto Slab", serif; font-size: 1.25rem;
+      color: var(--verde); min-height: 1.9em;
+      opacity: 0; animation: subir 0.8s 0.8s forwards;
+    }
+    .cursor { display: inline-block; width: 2px; height: 1.1em; background: var(--verde); margin-left: 3px; vertical-align: middle; animation: parpadeo 0.8s steps(2) infinite; }
+    .bajar {
+      position: absolute; bottom: 22px; left: 50%; transform: translateX(-50%);
+      width: 22px; height: 36px; border: 2px solid rgba(255,255,255,0.6); border-radius: 14px;
+      z-index: 1;
+    }
+    .bajar::after {
+      content: ""; position: absolute; top: 6px; left: 50%; width: 4px; height: 7px;
+      margin-left: -2px; background: var(--verde); border-radius: 2px;
+      animation: rueda 1.6s infinite;
+    }
+
+    @keyframes subir { to { opacity: 1; transform: none; } }
+    @keyframes parpadeo { 50% { opacity: 0; } }
+    @keyframes rueda { 0% { opacity: 1; transform: translateY(0); } 100% { opacity: 0; transform: translateY(14px); } }
+    @keyframes girar { to { transform: rotate(360deg); } }
+    @keyframes flotar { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+    @keyframes pulso { 0% { box-shadow: 0 0 0 0 rgba(63,196,124,0.55); } 100% { box-shadow: 0 0 0 16px rgba(63,196,124,0); } }
+
+    /* ---------- Aparecer al hacer scroll ---------- */
+    .js .rev { opacity: 0; transform: translateY(34px); transition: opacity 0.8s ease, transform 0.8s ease; transition-delay: var(--d, 0s); }
+    .js .rev.izq { transform: translateX(-40px); }
+    .js .rev.der { transform: translateX(40px); }
+    .js .rev.zoom { transform: scale(0.85); }
+    .js .rev.visto { opacity: 1; transform: none; }
+
+    /* ---------- Sobre mí ---------- */
+    .contenedor { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+    .sobre { padding: 70px 0; }
+    .sobre .contenedor {
+      display: grid; grid-template-columns: 1.25fr 1fr; gap: 48px; align-items: center;
+    }
+    .sobre h2 { font-size: 2rem; line-height: 1.25; color: var(--verde-oscuro); margin-bottom: 18px; }
+    .sobre p { margin: 0 0 14px; font-size: 0.98rem; }
+    .sobre blockquote {
+      margin: 18px 0 0; padding-left: 14px; border-left: 3px solid var(--verde);
+      font-style: italic; font-size: 0.95rem;
+    }
+    .perfil { text-align: center; }
+    .perfil h3 { font-size: 1.25rem; font-weight: 400; }
+    .perfil .edad { color: var(--verde-oscuro); font-weight: 700; font-size: 0.9rem; margin: 2px 0 20px; }
+    .marco { position: relative; width: 226px; height: 226px; margin: 0 auto; animation: flotar 5s ease-in-out infinite; }
+    .marco::before {
+      content: ""; position: absolute; inset: -8px; border-radius: 50%;
+      background: conic-gradient(var(--verde), transparent 40%, var(--verde) 75%, transparent);
+      animation: girar 6s linear infinite;
+      -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 3px), #000 calc(100% - 3px));
+              mask: radial-gradient(farthest-side, transparent calc(100% - 3px), #000 calc(100% - 3px));
+    }
+    .foto {
+      position: absolute; inset: 8px; border-radius: 50%;
+      background: linear-gradient(135deg, #2a2d33, #4a4f58);
+      color: #fff; display: flex; align-items: center; justify-content: center;
+      font-family: "Roboto Slab", serif; font-size: 3.4rem;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+      overflow: hidden;
+    }
+    .foto img { width: 100%; height: 100%; object-fit: cover; }
+
+    /* ---------- Franja con 3 accesos ---------- */
+    .accesos { background: var(--negro-2); color: #fff; padding: 56px 0; }
+    .accesos .contenedor { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; text-align: center; }
+    .acceso { padding: 18px 10px; border-radius: 14px; transition: background 0.3s; }
+    .acceso:hover { background: rgba(255,255,255,0.05); }
+    .icono {
+      width: 40px; height: 40px; margin: 0 auto 12px; border-radius: 50%;
+      background: var(--verde); color: #fff;
+      display: flex; align-items: center; justify-content: center; font-size: 1.05rem;
+      animation: pulso 2.2s infinite;
+      transition: transform 0.4s;
+    }
+    .acceso:hover .icono { transform: rotate(360deg) scale(1.15); }
+    .accesos h3 { font-size: 0.95rem; margin-bottom: 8px; }
+    .accesos p { margin: 0 0 10px; font-size: 0.82rem; opacity: 0.85; line-height: 1.5; }
+    .accesos a { color: var(--verde); text-decoration: none; font-size: 0.82rem; font-weight: 700; }
+    .accesos a span { display: inline-block; transition: transform 0.25s; }
+    .accesos a:hover span { transform: translateX(5px); }
+
+    /* ---------- Habilidades ---------- */
+    .habilidades { padding: 70px 0; }
+    .habilidades .contenedor { display: grid; grid-template-columns: 1.3fr 1fr; gap: 48px; align-items: center; }
+    .habilidades h2 { font-size: 1.6rem; margin-bottom: 14px; }
+    .habilidades p { margin: 0; font-size: 0.95rem; }
+    .barras { display: grid; gap: 16px; }
+    .barra .fila { display: flex; justify-content: space-between; font-size: 0.86rem; font-weight: 700; margin-bottom: 5px; }
+    .barra .fila b { color: var(--verde-oscuro); }
+    .barra .pista { height: 9px; border-radius: 99px; background: var(--linea); overflow: hidden; }
+    .barra .pista i {
+      display: block; height: 100%; width: 0; border-radius: 99px;
+      background: linear-gradient(90deg, var(--verde-oscuro), var(--verde), #7df0b0);
+      background-size: 200% 100%;
+      transition: width 1.5s cubic-bezier(.2,.8,.2,1);
+      animation: brillo 3s linear infinite;
+    }
+    @keyframes brillo { to { background-position: -200% 0; } }
+
+    /* ---------- Idiomas ---------- */
+    .idiomas {
+      background:
+        radial-gradient(circle, rgba(63,196,124,0.22) 2px, transparent 3px) 0 0 / 34px 34px,
+        var(--negro);
+      color: #fff; text-align: center; padding: 64px 0;
+      animation: mover-puntos 20s linear infinite;
+    }
+    @keyframes mover-puntos { to { background-position: 34px 68px, 0 0; } }
+    .idiomas h2 { font-size: 1.5rem; margin-bottom: 30px; }
+    .lista-idiomas { display: flex; justify-content: center; flex-wrap: wrap; gap: 28px 64px; }
+    .anillo {
+      --p: 0;
+      width: 104px; height: 104px; border-radius: 50%; margin: 0 auto 10px;
+      background: conic-gradient(var(--verde) calc(var(--p) * 1%), rgba(255,255,255,0.14) 0);
+      display: flex; align-items: center; justify-content: center; position: relative;
+    }
+    .anillo::before { content: ""; position: absolute; inset: 8px; border-radius: 50%; background: var(--negro); }
+    .anillo b { position: relative; font-family: "Roboto Slab", serif; color: var(--verde); font-size: 1.05rem; }
+    .lista-idiomas strong { display: block; font-family: "Roboto Slab", serif; }
+    .lista-idiomas span { font-size: 0.8rem; opacity: 0.85; }
+
+    /* ---------- Cursos (línea de tiempo) ---------- */
+    .seccion { padding: 70px 0; }
+    .seccion h2.titulo { text-align: center; font-size: 1.8rem; margin-bottom: 8px; font-weight: 400; }
+    .seccion .subtitulo { text-align: center; font-size: 0.9rem; color: var(--gris); margin: 0 0 38px; }
+    .linea { position: relative; margin-left: 8px; padding-left: 26px; }
+    .linea::before, .linea::after { content: ""; position: absolute; left: 0; top: 0; width: 2px; }
+    .linea::before { height: 100%; background: var(--linea); }
+    .linea::after { height: var(--fill, 0%); background: var(--verde); box-shadow: 0 0 8px var(--verde); }
+    .item {
+      position: relative; margin-bottom: 20px; padding: 16px 20px;
+      background: var(--tarjeta); border-radius: 12px; box-shadow: var(--sombra);
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+    .item:hover { transform: translateX(6px); }
+    .item::before {
+      content: ""; position: absolute; left: -35px; top: 22px;
+      width: 14px; height: 14px; border-radius: 50%;
+      background: var(--verde); border: 3px solid var(--claro);
+      transition: transform 0.3s;
+    }
+    .item:hover::before { transform: scale(1.4); }
+    .item .ciclo { font-size: 0.8rem; font-weight: 700; opacity: 0.7; }
+    .item h3 { font-size: 1.1rem; font-weight: 700; margin: 2px 0 2px; }
+    .item .profe { margin: 0; font-size: 0.92rem; }
+    .item a.linkedin {
+      display: inline-block; margin-top: 6px;
+      color: #0a66c2; font-weight: 700; font-size: 0.85rem; text-decoration: none;
+    }
+    :root[data-tema="oscuro"] .item a.linkedin { color: #6db3f2; }
+    .item a.linkedin:hover { text-decoration: underline; }
+
+    /* ---------- Compañeros ---------- */
+    .companeros-bg { background: var(--blanco); transition: background 0.4s; }
+    .buscador {
+      display: block; width: 100%; max-width: 380px; margin: 0 auto 26px;
+      padding: 11px 18px; border-radius: 999px;
+      border: 2px solid var(--linea); background: var(--tarjeta); color: var(--azul-texto);
+      font: inherit; font-size: 0.92rem; outline: none; transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .buscador:focus { border-color: var(--verde); box-shadow: 0 0 0 4px rgba(63,196,124,0.2); }
+    .tarjetas { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
+    .tarjetas li { perspective: 700px; }
+    .tarjetas .card {
+      display: block; padding: 18px 20px; border-radius: 12px;
+      background: var(--tarjeta); text-decoration: none; font-weight: 700;
+      border-left: 4px solid var(--verde); box-shadow: var(--sombra);
+      transition: transform 0.15s ease-out, box-shadow 0.3s;
+      transform-style: preserve-3d;
+      position: relative; overflow: hidden;
+    }
+    .tarjetas .card::before {
+      pointer-events: none;
+      content: ""; position: absolute; inset: 0;
+      background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%), rgba(63,196,124,0.22), transparent 55%);
+      opacity: 0; transition: opacity 0.3s;
+    }
+    .tarjetas .card:hover::before { opacity: 1; }
+    .tarjetas .card:hover { box-shadow: 0 12px 28px rgba(63,196,124,0.25); }
+    .tarjetas .web { display: block; position: relative; color: inherit; text-decoration: none; }
+    .tarjetas .web:hover .nombre { color: var(--verde-oscuro); }
+    .tarjetas .in {
+      position: relative; display: inline-block; margin-top: 10px;
+      font-size: 0.82rem; font-weight: 700; color: #0a66c2; text-decoration: none;
+    }
+    .tarjetas .in:hover { text-decoration: underline; }
+    :root[data-tema="oscuro"] .tarjetas .in { color: #6db3f2; }
+    .tarjetas small { display: block; font-weight: 400; color: var(--gris); position: relative; }
+    .tarjetas .nombre { position: relative; }
+    .sin-resultados { display: none; text-align: center; color: var(--gris); margin-top: 16px; }
+
+    /* ---------- Contacto ---------- */
+    .contacto { background: var(--negro); color: #fff; text-align: center; padding: 60px 20px; }
+    .contacto h2 { font-size: 1.5rem; margin-bottom: 8px; }
+    .contacto p { margin: 0 0 22px; opacity: 0.8; font-size: 0.92rem; }
+    .btn {
+      display: inline-block; margin: 5px; padding: 12px 26px; border-radius: 999px; border: 2px solid var(--verde);
+      background: var(--verde); color: #fff; text-decoration: none; font: inherit; font-weight: 700; font-size: 0.9rem;
+      cursor: pointer; position: relative; overflow: hidden;
+      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+    }
+    .btn:hover { background: var(--verde-oscuro); transform: translateY(-3px); box-shadow: 0 8px 20px rgba(63,196,124,0.4); }
+    .btn.borde { background: transparent; border: 2px solid var(--verde); color: var(--verde); }
+    .btn.borde:hover { background: var(--verde); color: #fff; }
+    .contacto .zoom { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; }
+    .onda {
+      position: absolute; border-radius: 50%; background: rgba(255,255,255,0.45);
+      transform: scale(0); animation: onda 0.6s linear; pointer-events: none;
+    }
+    @keyframes onda { to { transform: scale(4); opacity: 0; } }
+
+    footer { background: #0e0f10; color: #8a8f99; text-align: center; padding: 18px; font-size: 0.78rem; }
+
+    /* ---------- Botones flotantes ---------- */
+    .flotante {
+      position: fixed; right: 18px; z-index: 45; width: 44px; height: 44px; border-radius: 50%;
+      border: 0; cursor: pointer; font-size: 1.15rem;
+      background: var(--verde); color: #fff; box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+      transition: transform 0.25s, opacity 0.3s, background 0.2s;
+    }
+    .flotante:hover { background: var(--verde-oscuro); transform: scale(1.12); }
+    #tema { bottom: 74px; display: grid; place-items: center; }
+    #tema svg { width: 22px; height: 22px; }
+    #tema .i-sol { display: none; }
+    :root[data-tema="oscuro"] #tema .i-luna { display: none; }
+    :root[data-tema="oscuro"] #tema .i-sol { display: block; }
+    #subir { bottom: 18px; opacity: 0; pointer-events: none; transform: translateY(20px); }
+    #subir.ver { opacity: 1; pointer-events: auto; transform: none; }
+
+    /* ---------- Aviso (toast) ---------- */
+    #toast {
+      position: fixed; left: 50%; bottom: 26px; z-index: 60;
+      transform: translate(-50%, 30px); opacity: 0;
+      background: #222; color: #fff; padding: 11px 22px; border-radius: 999px;
+      font-size: 0.88rem; transition: all 0.35s; pointer-events: none;
+    }
+    #toast.ver { opacity: 1; transform: translate(-50%, 0); }
+
+    /* ---------- Celular ---------- */
+    @media (max-width: 720px) {
+      nav { padding: 10px 16px; background: rgba(21, 22, 24, 0.92); justify-content: space-between; }
+      #hamburguesa { display: block; }
+      nav .enlaces {
+        position: absolute; top: 100%; left: 0; right: 0;
+        flex-direction: column; align-items: center; gap: 14px;
+        background: rgba(21, 22, 24, 0.97);
+        padding: 0 0; max-height: 0; overflow: hidden;
+        transition: max-height 0.4s, padding 0.4s;
+      }
+      nav.abierto .enlaces { max-height: 340px; padding: 18px 0; }
+      .sobre .contenedor, .habilidades .contenedor { grid-template-columns: 1fr; gap: 32px; }
+      .accesos .contenedor { grid-template-columns: 1fr; }
+      .perfil { order: -1; }
+    }
+
+    /* ---------- Respeta a quien prefiere menos movimiento ---------- */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+      html { scroll-behavior: auto; }
+      .js .rev { opacity: 1; transform: none; }
+      .hero h1 .palabra, .hero p { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="progreso"></div>
+
+  <nav id="menu">
+    <button id="hamburguesa" aria-label="Abrir menú">☰</button>
+    <div class="enlaces">
+      <a href="#sobre-mi">Sobre mí</a>
+      <a href="#habilidades">Habilidades</a>
+      <a href="#experiencia">Experiencia</a>
+      <a href="#cursos">Cursos</a>
+      <a href="#companeros">Compañeros</a>
+      <a href="#contacto">Contacto</a>
+    </div>
+  </nav>
+
+  <!-- CABECERA -->
+  <header class="hero">
+    <canvas id="particulas"></canvas>
+    <h1>
+      <span class="palabra">Jorge</span>
+      <span class="palabra">Manuel</span>
+      <span class="palabra">Firata</span>
+      <span class="palabra">Quispe</span>
+    </h1>
+    <p><span id="escribiendo">Estudiante de Inteligencia Artificial</span><span class="cursor"></span></p>
+    <div class="bajar" aria-hidden="true"></div>
+  </header>
+
+  <!-- SOBRE MÍ (descripción personal estilo CV) -->
+  <section class="sobre" id="sobre-mi">
+    <div class="contenedor">
+      <div class="rev izq">
+        <h2>Apasionado por la innovación tecnológica.</h2>
+        <p>
+          Soy Jorge Manuel Firata Quispe, estudiante de Inteligencia Artificial en la Universidad Católica San Pablo (UCSP).
+          Antes estudié Diseño y Desarrollo de Software en TECSUP, donde me enfoqué en desarrollo web full stack,
+          soluciones IoT y análisis de datos. Me motiva aprender nuevas herramientas y asumir desafíos tecnológicos.
+        </p>
+        <p>
+          Participé en proyectos como VitalCore, un dispositivo portátil para monitorear la salud en tiempo real
+          que integra IoT y software, y trabajé como Técnico de TI en WAYRAMED E.I.R.L.
+        </p>
+      </div>
+      <div class="perfil rev der">
+        <h3>Radicado en Arequipa, Perú</h3>
+        <p class="edad">Estudiante de Inteligencia Artificial</p>
+        <div class="marco">
+          <!-- Si tienes foto, cambia JF por: <img src="foto.jpg" alt="Jorge Manuel Firata Quispe"> -->
+          <div class="foto" aria-label="Foto de Jorge Manuel Firata Quispe">JF</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 ACCESOS -->
+  <section class="accesos">
+    <div class="contenedor">
+      <div class="acceso rev" style="--d:0s">
+        <div class="icono">★</div>
+        <h3>Habilidades</h3>
+        <p>Conoce lo que sé hacer y en qué me estoy formando.</p>
+        <a href="#habilidades">Ver más <span>›</span></a>
+      </div>
+      <div class="acceso rev" style="--d:.15s">
+        <div class="icono">✎</div>
+        <h3>Cursos y profesores</h3>
+        <p>Los cursos de mi carrera, mis profesores y sus perfiles de LinkedIn.</p>
+        <a href="#cursos">Ver más <span>›</span></a>
+      </div>
+      <div class="acceso rev" style="--d:.3s">
+        <div class="icono">☰</div>
+        <h3>Compañeros</h3>
+        <p>Las páginas web de mis compañeros de clase.</p>
+        <a href="#companeros">Ver más <span>›</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- HABILIDADES -->
+  <section class="habilidades" id="habilidades">
+    <div class="contenedor">
+      <div class="rev izq">
+        <h2>Mis habilidades</h2>
+        <p>
+          Desarrollo web con React, Node.js y Firebase; soluciones IoT con ESP32 y MQTT;
+          análisis de datos con Spark y Kafka; modelado de sistemas con Bizagi y
+          metodologías ágiles (Scrum y Kanban).
+        </p>
+      </div>
+      <div class="barras rev der">
+        <!-- Cambia data-nivel (0 a 100) y el nombre -->
+        <div class="barra"><div class="fila"><span>Desarrollo web (React, Node.js, Firebase)</span><b data-contar="80">0%</b></div><div class="pista"><i data-nivel="80"></i></div></div>
+        <div class="barra"><div class="fila"><span>IoT (ESP32, MQTT)</span><b data-contar="70">0%</b></div><div class="pista"><i data-nivel="70"></i></div></div>
+        <div class="barra"><div class="fila"><span>Metodologías ágiles (Scrum, Kanban)</span><b data-contar="75">0%</b></div><div class="pista"><i data-nivel="75"></i></div></div>
+        <div class="barra"><div class="fila"><span>Modelado de sistemas (Bizagi)</span><b data-contar="65">0%</b></div><div class="pista"><i data-nivel="65"></i></div></div>
+        <div class="barra"><div class="fila"><span>Análisis de datos (Spark, Kafka)</span><b data-contar="55">0%</b></div><div class="pista"><i data-nivel="55"></i></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- IDIOMAS -->
+  <section class="idiomas">
+    <div class="contenedor">
+      <h2 class="rev">Idiomas</h2>
+      <div class="lista-idiomas">
+        <!-- data-nivel = porcentaje del círculo -->
+        <div class="rev zoom" style="--d:0s">
+          <div class="anillo" data-nivel="100"><b>0%</b></div>
+          <strong>Español</strong><span>Nativo</span>
+        </div>
+        <div class="rev zoom" style="--d:.15s">
+          <div class="anillo" data-nivel="60"><b>0%</b></div>
+          <strong>Inglés</strong><span>Intermedio</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORMACIÓN Y EXPERIENCIA -->
+  <section class="seccion" id="experiencia">
+    <div class="contenedor">
+      <h2 class="titulo rev">Formación y experiencia</h2>
+      <p class="subtitulo rev">Mi recorrido académico y laboral.</p>
+      <div class="linea">
+        <div class="item rev der">
+          <span class="ciclo">2026 – Actualidad</span>
+          <h3>Universidad Católica San Pablo (UCSP)</h3>
+          <p class="profe">Inteligencia Artificial</p>
+        </div>
+        <div class="item rev der">
+          <span class="ciclo">Sept. 2025 – Feb. 2026</span>
+          <h3>Técnico de TI · WAYRAMED E.I.R.L.</h3>
+          <p class="profe">Jornada completa · Cerro Colorado, Arequipa, Perú · Presencial</p>
+        </div>
+        <div class="item rev der">
+          <span class="ciclo">Mar. 2021 – Jul. 2025</span>
+          <h3>TECSUP</h3>
+          <p class="profe">Diseño y Desarrollo de Software. Enfoque en desarrollo web, integración IoT, análisis de datos y soluciones tecnológicas; proyecto destacado: VitalCore, un dispositivo portátil para monitoreo de salud.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CURSOS Y PROFESORES -->
+  <section class="seccion" id="cursos">
+    <div class="contenedor">
+      <h2 class="titulo rev">Cursos de la carrera</h2>
+      <p class="subtitulo rev">Mis cursos, mis profesores y sus perfiles de LinkedIn.</p>
+      <div class="linea" id="linea">
+        <!-- Para agregar un curso, copia un bloque <div class="item rev der"> completo -->
+        <div class="item rev der">
+          <span class="ciclo">Ciclo 1</span>
+          <h3>Introducción a Computación</h3>
+          <p class="profe">Profesor: Ernesto Cuadros Vargas · <a class="linkedin" href="https://www.linkedin.com/in/ecuadrosv/" target="_blank" rel="noopener">LinkedIn →</a></p>
+          <p class="profe">Profesora: Rosmery Violeta Quispe Zavala · <a class="linkedin" href="https://www.linkedin.com/in/rosmery-violeta-quispe-zavala-58374638/" target="_blank" rel="noopener">LinkedIn →</a></p>
+        </div>
+        <div class="item rev der">
+          <span class="ciclo">Ciclo 1</span>
+          <h3>Fundamentos de Programación</h3>
+          <p class="profe">Profesora: Yessenia Deysi Yari Ramos · <a class="linkedin" href="https://www.linkedin.com/in/yessenia-yari-b4778139/" target="_blank" rel="noopener">LinkedIn →</a></p>
+        </div>
+        <div class="item rev der">
+          <span class="ciclo">Ciclo 1</span>
+          <h3>Fundamentos Matemáticos para Computación</h3>
+          <p class="profe">Profesora: Sabrina Suárez Calcina</p>
+        </div>
+        <div class="item rev der">
+          <span class="ciclo">Ciclo 1</span>
+          <h3>Introducción a la Vida Universitaria</h3>
+          <p class="profe">Profesora: Gabriela Ponce Reinoso · <a class="linkedin" href="https://www.linkedin.com/in/gabriela-ponce-145b06149/" target="_blank" rel="noopener">LinkedIn →</a></p>
+        </div>
+        <div class="item rev der">
+          <span class="ciclo">Ciclo 1</span>
+          <h3>Comunicación I</h3>
+          <p class="profe">Profesor: Angel Rodríguez Cruz · <a class="linkedin" href="https://www.linkedin.com/in/angel-rodriguez-cruz-58b78b85/" target="_blank" rel="noopener">LinkedIn →</a></p>
+        </div>
+        <div class="item rev der">
+          <span class="ciclo">Ciclo 1</span>
+          <h3>Lógica</h3>
+          <p class="profe">Profesora: Kristel Gisselle Loayza Cruz · <a class="linkedin" href="https://www.linkedin.com/in/kristel-gisselle-loayza-cruz-abb3b039b/" target="_blank" rel="noopener">LinkedIn →</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPAÑEROS -->
+  <section class="seccion companeros-bg" id="companeros">
+    <div class="contenedor">
+      <h2 class="titulo rev">Mis compañeros</h2>
+      <p class="subtitulo rev">Visita las páginas web de mis compañeros.</p>
+      <input class="buscador" id="buscador" type="search" placeholder="Buscar compañero..." aria-label="Buscar compañero">
+      <ul class="tarjetas" id="lista-companeros">
+        <!-- Para agregar a alguien, copia un bloque <li> completo -->
+        <li class="rev" style="--d:0s"><div class="card">
+          <a class="web" href="https://apocalipto3000.github.io/Andres_Caballero/" target="_blank" rel="noopener"><span class="nombre">Andres Caballero</span><small>Ver su página web →</small></a>
+          <a class="in" href="https://www.linkedin.com/in/andres-caballero-5a2367436/" target="_blank" rel="noopener">LinkedIn →</a>
+        </div></li>
+        <li class="rev" style="--d:.1s"><div class="card">
+          <a class="web" href="https://emelyanccari-ops.github.io/" target="_blank" rel="noopener"><span class="nombre">Emely Mirella Anccari Lopez</span><small>Ver su página web →</small></a>
+          <a class="in" href="https://www.linkedin.com/in/emely-mirella-anccari-lopez-9371a043a/" target="_blank" rel="noopener">LinkedIn →</a>
+        </div></li>
+        <li class="rev" style="--d:.2s"><div class="card">
+          <a class="web" href="https://josealviar-acc.github.io/" target="_blank" rel="noopener"><span class="nombre">José Manuel Alviar</span><small>Ver su página web →</small></a>
+          <a class="in" href="https://www.linkedin.com/in/jos%C3%A9-manuel-alviar-6889b33a3/" target="_blank" rel="noopener">LinkedIn →</a>
+        </div></li>
+        <li class="rev" style="--d:.3s"><div class="card">
+          <a class="web" href="https://guanaco20.github.io/UCSP_CS/" target="_blank" rel="noopener"><span class="nombre">Juan Gabriel Huanaco Quispe</span><small>Ver su página web →</small></a>
+          <a class="in" href="https://www.linkedin.com/in/juan-gabriel-huanaco-quispe-47750128b/" target="_blank" rel="noopener">LinkedIn →</a>
+        </div></li>
+        <li class="rev" style="--d:.4s"><div class="card">
+          <a class="web" href="https://rreec-253.github.io/MyPage/" target="_blank" rel="noopener"><span class="nombre">Rodrigo Raúl Estefano Espinoza Concha</span><small>Ver su página web →</small></a>
+          <a class="in" href="https://www.linkedin.com/in/rodrigo-espinoza-b49b363b4/" target="_blank" rel="noopener">LinkedIn →</a>
+        </div></li>
+        <li class="rev" style="--d:.5s"><div class="card">
+          <a class="web" href="https://sebasochoa.github.io/" target="_blank" rel="noopener"><span class="nombre">Sebastian Andre Ochoa Ortiz</span><small>Ver su página web →</small></a>
+          <a class="in" href="https://www.linkedin.com/in/sebastian-ochoa-ortiz-272197367/" target="_blank" rel="noopener">LinkedIn →</a>
+        </div></li>
+        <li class="rev" style="--d:.6s"><div class="card">
+          <a class="web" href="https://zeeshanmcorimanya.github.io/" target="_blank" rel="noopener"><span class="nombre">Zeeshan Muhammad Corimanya</span><small>Ver su página web →</small></a>
+          <a class="in" href="https://www.linkedin.com/in/zeeshan-muhammad-corimanya-3b5744435/" target="_blank" rel="noopener">LinkedIn →</a>
+        </div></li>
+        <li class="rev" style="--d:.7s"><div class="card">
+          <a class="web" href="https://biankahacha-ui.github.io/" target="_blank" rel="noopener"><span class="nombre">Bianka Camila Hacha Calienes</span><small>Ver su página web →</small></a>
+        </div></li>
+        <li class="rev" style="--d:.8s"><div class="card">
+          <a class="web" href="https://cinthia-tech609.github.io/" target="_blank" rel="noopener"><span class="nombre">Cinthia Luz Mamani Chata</span><small>Ver su página web →</small></a>
+          <a class="in" href="https://www.linkedin.com/in/cinthia-luz-mamani-chata-833624437/" target="_blank" rel="noopener">LinkedIn →</a>
+        </div></li>
+      </ul>
+      <p class="sin-resultados" id="sin-resultados">No encontré a nadie con ese nombre.</p>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section class="contacto" id="contacto">
+    <h2 class="rev">Contacto</h2>
+    <p class="rev">¿Quieres ponerte en contacto conmigo?</p>
+    <div class="rev zoom">
+      <a class="btn" href="https://www.linkedin.com/in/jorge-manuel-firata-quispe-40b648282/" target="_blank" rel="noopener">Mi LinkedIn</a>
+      <a class="btn" href="mailto:tucorreo@ejemplo.com">Escríbeme</a>
+      <button class="btn borde" id="copiar" data-correo="tucorreo@ejemplo.com">Copiar correo</button>
+    </div>
+  </section>
+
+  <footer>© <span id="anio">2026</span> Jorge Manuel Firata Quispe</footer>
+
+  <button class="flotante" id="tema" aria-label="Cambiar tema claro u oscuro" title="Cambiar tema">
+    <svg class="i-luna" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+    <svg class="i-sol" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+  </button>
+  <button class="flotante" id="subir" aria-label="Volver arriba" title="Volver arriba">↑</button>
+  <div id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    (function () {
+      var raiz = document.documentElement;
+      raiz.classList.add('js');
+      var quieteMovimiento = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      function $(s, ctx) { return (ctx || document).querySelector(s); }
+      function $$(s, ctx) { return Array.prototype.slice.call((ctx || document).querySelectorAll(s)); }
+
+      /* ---------- Año automático ---------- */
+      $('#anio').textContent = new Date().getFullYear();
+
+      /* ---------- Tema claro / oscuro (se recuerda) ---------- */
+      var botonTema = $('#tema');
+      function aplicarTema(t) {
+        if (t === 'oscuro') { raiz.setAttribute('data-tema', 'oscuro'); }
+        else { raiz.removeAttribute('data-tema'); }
+      }
+      var guardado = null;
+      try { guardado = localStorage.getItem('tema'); } catch (e) {}
+      aplicarTema(guardado || 'oscuro'); // tema por defecto: cambia 'oscuro' por 'claro' si prefieres el claro
+      botonTema.addEventListener('click', function () {
+        var nuevo = raiz.getAttribute('data-tema') === 'oscuro' ? 'claro' : 'oscuro';
+        aplicarTema(nuevo);
+        try { localStorage.setItem('tema', nuevo); } catch (e) {}
+      });
+
+      /* ---------- Aviso (toast) ---------- */
+      var toast = $('#toast'), toastT;
+      function avisar(msg) {
+        toast.textContent = msg; toast.classList.add('ver');
+        clearTimeout(toastT);
+        toastT = setTimeout(function () { toast.classList.remove('ver'); }, 2200);
+      }
+
+      /* ---------- Menú móvil ---------- */
+      var menu = $('#menu');
+      $('#hamburguesa').addEventListener('click', function () { menu.classList.toggle('abierto'); });
+      $$('nav a').forEach(function (a) {
+        a.addEventListener('click', function () { menu.classList.remove('abierto'); });
+      });
+
+      /* ---------- Efecto de escribir en la cabecera ---------- */
+      var frases = ['Estudiante de Inteligencia Artificial', 'Siempre aprendiendo', 'Me encanta trabajar en equipo'];
+      var destino = $('#escribiendo');
+      if (!quieteMovimiento) {
+        var f = 0, c = frases[0].length, borrando = false;
+        setTimeout(function escribir() {
+          var frase = frases[f];
+          destino.textContent = frase.slice(0, c);
+          var espera = borrando ? 40 : 85;
+          if (!borrando && c === frase.length) { borrando = true; espera = 1800; }
+          else if (borrando && c === 0) { borrando = false; f = (f + 1) % frases.length; espera = 400; }
+          else { c += borrando ? -1 : 1; }
+          setTimeout(escribir, espera);
+        }, 2200);
+      }
+
+      /* ---------- Aparecer al hacer scroll ---------- */
+      var io = new IntersectionObserver(function (entradas) {
+        entradas.forEach(function (e) {
+          if (e.isIntersecting) { e.target.classList.add('visto'); io.unobserve(e.target); }
+        });
+      }, { threshold: 0.15 });
+      $$('.rev').forEach(function (el) { io.observe(el); });
+
+      /* ---------- Contadores, barras y anillos ---------- */
+      function animarNumero(el, hasta, duracion, alCambiar) {
+        if (quieteMovimiento) { alCambiar(hasta); return; }
+        var inicio = null;
+        function paso(t) {
+          if (!inicio) inicio = t;
+          var p = Math.min((t - inicio) / duracion, 1);
+          var suave = 1 - Math.pow(1 - p, 3);
+          alCambiar(Math.round(hasta * suave));
+          if (p < 1) requestAnimationFrame(paso);
+        }
+        requestAnimationFrame(paso);
+      }
+      var ioNum = new IntersectionObserver(function (entradas) {
+        entradas.forEach(function (e) {
+          if (!e.isIntersecting) return;
+          var cont = e.target;
+          // Barras de habilidad
+          $$('.pista i', cont).forEach(function (i) { i.style.width = i.getAttribute('data-nivel') + '%'; });
+          $$('[data-contar]', cont).forEach(function (b) {
+            animarNumero(b, +b.getAttribute('data-contar'), 1500, function (v) { b.textContent = v + '%'; });
+          });
+          // Anillos de idiomas
+          $$('.anillo', cont).forEach(function (a) {
+            var meta = +a.getAttribute('data-nivel');
+            animarNumero(a, meta, 1600, function (v) {
+              a.style.setProperty('--p', v);
+              $('b', a).textContent = v + '%';
+            });
+          });
+          ioNum.unobserve(cont);
+        });
+      }, { threshold: 0.3 });
+      $$('.barras, .lista-idiomas').forEach(function (el) { ioNum.observe(el); });
+
+      /* ---------- Scroll: progreso, menú sólido, botón subir, línea de tiempo, sección activa ---------- */
+      var barraProgreso = $('#progreso'), botonSubir = $('#subir'), linea = $('#linea');
+      var enlaces = $$('nav .enlaces a');
+      var secciones = enlaces.map(function (a) { return $(a.getAttribute('href')); });
+      var ticking = false;
+      function alScroll() {
+        var y = window.scrollY, alto = document.documentElement.scrollHeight - window.innerHeight;
+        barraProgreso.style.transform = 'scaleX(' + (alto > 0 ? y / alto : 0) + ')';
+        menu.classList.toggle('solido', y > 60);
+        botonSubir.classList.toggle('ver', y > 500);
+
+        $$('.linea').forEach(function (l) {
+          var r = l.getBoundingClientRect();
+          var pct = ((window.innerHeight * 0.6) - r.top) / r.height;
+          l.style.setProperty('--fill', Math.max(0, Math.min(1, pct)) * 100 + '%');
+        });
+
+        var actual = -1, marca = window.innerHeight * 0.4;
+        secciones.forEach(function (s, i) {
+          if (s && s.getBoundingClientRect().top <= marca) actual = i;
+        });
+        enlaces.forEach(function (a, i) { a.classList.toggle('activo', i === actual); });
+        ticking = false;
+      }
+      window.addEventListener('scroll', function () {
+        if (!ticking) { requestAnimationFrame(alScroll); ticking = true; }
+      }, { passive: true });
+      window.addEventListener('resize', alScroll);
+      alScroll();
+
+      botonSubir.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+
+      /* ---------- Tarjetas que se inclinan y brillan con el mouse ---------- */
+      if (!quieteMovimiento && window.matchMedia('(hover: hover)').matches) {
+        $$('.tarjetas .card').forEach(function (t) {
+          t.addEventListener('mousemove', function (e) {
+            var r = t.getBoundingClientRect();
+            var x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+            t.style.transform = 'rotateX(' + ((0.5 - y) * 12) + 'deg) rotateY(' + ((x - 0.5) * 12) + 'deg) translateY(-4px)';
+            t.style.setProperty('--mx', (x * 100) + '%');
+            t.style.setProperty('--my', (y * 100) + '%');
+          });
+          t.addEventListener('mouseleave', function () { t.style.transform = ''; });
+        });
+      }
+
+      /* ---------- Buscador de compañeros ---------- */
+      var buscador = $('#buscador'), vacio = $('#sin-resultados');
+      buscador.addEventListener('input', function () {
+        var q = buscador.value.toLowerCase().trim(), visibles = 0;
+        $$('#lista-companeros li').forEach(function (li) {
+          var ok = li.textContent.toLowerCase().indexOf(q) !== -1;
+          li.style.display = ok ? '' : 'none';
+          if (ok) visibles++;
+        });
+        vacio.style.display = visibles ? 'none' : 'block';
+      });
+
+      /* ---------- Botones con efecto de onda ---------- */
+      $$('.btn').forEach(function (b) {
+        b.addEventListener('click', function (e) {
+          if (quieteMovimiento) return;
+          var r = b.getBoundingClientRect(), d = Math.max(r.width, r.height);
+          var o = document.createElement('span');
+          o.className = 'onda';
+          o.style.width = o.style.height = d + 'px';
+          o.style.left = (e.clientX - r.left - d / 2) + 'px';
+          o.style.top = (e.clientY - r.top - d / 2) + 'px';
+          b.appendChild(o);
+          setTimeout(function () { o.remove(); }, 600);
+        });
+      });
+
+      /* ---------- Copiar correo ---------- */
+      $('#copiar').addEventListener('click', function () {
+        var correo = this.getAttribute('data-correo');
+        function ok() { avisar('Correo copiado'); }
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(correo).then(ok, function () { avisar(correo); });
+        } else { avisar(correo); }
+      });
+
+      /* ---------- Partículas de la cabecera (siguen al mouse) ---------- */
+      var canvas = $('#particulas');
+      if (canvas && !quieteMovimiento) {
+        var ctx = canvas.getContext('2d'), W, H, puntos = [], mouse = { x: null, y: null }, activo = true;
+        var hero = canvas.parentElement;
+        function medir() {
+          W = canvas.width = hero.offsetWidth;
+          H = canvas.height = hero.offsetHeight;
+          var n = Math.min(80, Math.floor(W * H / 14000));
+          puntos = [];
+          for (var i = 0; i < n; i++) {
+            puntos.push({ x: Math.random() * W, y: Math.random() * H,
+              vx: (Math.random() - 0.5) * 0.5, vy: (Math.random() - 0.5) * 0.5, r: Math.random() * 1.8 + 0.8 });
+          }
+        }
+        medir();
+        window.addEventListener('resize', medir);
+        hero.addEventListener('mousemove', function (e) {
+          var r = hero.getBoundingClientRect(); mouse.x = e.clientX - r.left; mouse.y = e.clientY - r.top;
+        });
+        hero.addEventListener('mouseleave', function () { mouse.x = mouse.y = null; });
+        new IntersectionObserver(function (en) { activo = en[0].isIntersecting; if (activo) dibujar(); }).observe(hero);
+
+        function dibujar() {
+          if (!activo) return;
+          ctx.clearRect(0, 0, W, H);
+          for (var i = 0; i < puntos.length; i++) {
+            var p = puntos[i];
+            p.x += p.vx; p.y += p.vy;
+            if (p.x < 0 || p.x > W) p.vx *= -1;
+            if (p.y < 0 || p.y > H) p.vy *= -1;
+            if (mouse.x !== null) {
+              var dx = mouse.x - p.x, dy = mouse.y - p.y, d = Math.sqrt(dx * dx + dy * dy);
+              if (d < 150) { p.x += dx * 0.012; p.y += dy * 0.012; }
+            }
+            ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, 6.2832);
+            ctx.fillStyle = 'rgba(63,196,124,0.85)'; ctx.fill();
+            for (var j = i + 1; j < puntos.length; j++) {
+              var q = puntos[j], ax = p.x - q.x, ay = p.y - q.y, dist = Math.sqrt(ax * ax + ay * ay);
+              if (dist < 110) {
+                ctx.strokeStyle = 'rgba(63,196,124,' + (0.35 * (1 - dist / 110)) + ')';
+                ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(q.x, q.y); ctx.stroke();
+              }
+            }
+            if (mouse.x !== null) {
+              var mx = p.x - mouse.x, my = p.y - mouse.y, md = Math.sqrt(mx * mx + my * my);
+              if (md < 150) {
+                ctx.strokeStyle = 'rgba(125,240,176,' + (0.5 * (1 - md / 150)) + ')';
+                ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(mouse.x, mouse.y); ctx.stroke();
+              }
+            }
+          }
+          requestAnimationFrame(dibujar);
+        }
+        dibujar();
+      }
+    })();
+  </script>
+</body>
+</html>
